@@ -2,6 +2,10 @@ import streamlit as st
 import pandas as pd
 import pickle
 import requests
+import os
+
+if not os.path.exists('movies_dict.pkl') or not os.path.exists('similarity.pkl'):
+    import movie_reccomender  # Ensure the recommender script is run to create necessary files
 
 movies_dict = pickle.load(open('movies_dict.pkl', 'rb'))
 movies = pd.DataFrame(movies_dict)
